@@ -18,4 +18,5 @@ public class Main {
         System.out.println("\nSearching for non-existent symbol: " + symbolTable.search("lalalal") + "\n");
         System.out.println("Symbol Table: " + symbolTable);
     }
+    //cerinta, analiza si proiectare, implementare, exemple de test; diagrame?????
 }

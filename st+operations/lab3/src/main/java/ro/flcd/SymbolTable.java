@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class SymbolTable { //hashtable
     private final ArrayList<LinkedList<String>> table = new ArrayList<>();
     private int m = 997;
+    private int size = 0;
 
     public SymbolTable() {
         IntStream.range(0, m).forEach(i -> table.add(new LinkedList<>()));
@@ -18,6 +19,10 @@ public class SymbolTable { //hashtable
         this.m = m;
         IntStream.range(0, m).forEach(i -> table.add(new LinkedList<>()));
 
+    }
+
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -52,22 +57,6 @@ public class SymbolTable { //hashtable
     }
 
     /**
-     * Searches for the symbol in the symbol table.
-     *
-     * @param positions : Pair of integers representing the position in the hashtable and in the linkedlist
-     * @return : String representing the symbol found
-     * @throws : RuntimeException if the elem does not exist
-     */
-    public String getElementByPosition(final Pair<Integer, Integer> positions) {
-        int hashtableIndex = positions.getKey();
-        int linkedListIndex = positions.getValue();
-        if (hashtableIndex == -1 || linkedListIndex == -1 || table.get(hashtableIndex) == null || table.get(hashtableIndex).get(linkedListIndex) == null) {
-            throw new RuntimeException("Invalid positions in hashtable");
-        }
-        return table.get(positions.getKey()).get(positions.getValue());
-    }
-
-    /**
      * Inserts the symbol in the symbol table, if it doesn't already exist
      *
      * @param symbol : string representing identifier or constant
@@ -78,10 +67,8 @@ public class SymbolTable { //hashtable
         final Pair<Integer, Integer> positions = search(symbol);
         if (positions.getKey() == -1 && positions.getValue() == -1) {
             LinkedList<String> linkedList = table.get(index);
-            if (linkedList == null) {
-                linkedList = new LinkedList<>();
-            }
             linkedList.add(symbol);
+            this.size += 1;
             return new Pair<>(index, linkedList.indexOf(symbol));
         }
         return positions;
@@ -92,7 +79,7 @@ public class SymbolTable { //hashtable
         final StringBuilder sb = new StringBuilder();
         for (int index = 0; index < table.size(); index++) {
             if (!table.get(index).isEmpty())
-            sb.append(index + ": " + table.get(index) + "\n");
+                sb.append(index + ": " + table.get(index) + "\n");
         }
         return sb.toString();
     }
