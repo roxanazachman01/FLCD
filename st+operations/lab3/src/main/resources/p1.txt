@@ -1,0 +1,24 @@
+{
+int x;
+int y;
+int z2a33;
+int max;
+
+begin
+
+read(x);
+read(y);
+read(z);
+max=x;
+
+if(y>1max)
+{
+	max=y;
+}
+if(z>max)
+{
+	max=z;
+}
+
+end
+}

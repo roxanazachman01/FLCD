@@ -1,9 +1,8 @@
 package ro.flcd;
 
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
+        /*
         final SymbolTable symbolTable = new SymbolTable();
         List<String> symbols = List.of("test", "a", "c", "b",
                 String.valueOf(-2), String.valueOf(0), String.valueOf(1),
@@ -17,6 +16,11 @@ public class Main {
         }
         System.out.println("\nSearching for non-existent symbol: " + symbolTable.search("lalalal") + "\n");
         System.out.println("Symbol Table: " + symbolTable);
+        */
+         Scanner scanner = new Scanner("p1.txt","token.in");
+//         scanner.printFileContent();
+        scanner.tokenize();
+
     }
     //cerinta, analiza si proiectare, implementare, exemple de test; diagrame?????
 }
