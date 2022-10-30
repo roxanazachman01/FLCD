@@ -1,0 +1,25 @@
+
+{
+int[20] numbers;
+int sum;
+int index;
+
+begin
+sum=0;
+index=0;
+while(index<20)
+{
+read(numbers[index])
+index=index+1;
+}
+
+index=0;
+while(index<20)
+{
+sum=sum+numbers[index];
+index=index+1;
+}
+
+write(sum);
+end
+}

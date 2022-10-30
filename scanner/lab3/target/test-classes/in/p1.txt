@@ -1,7 +1,7 @@
 {
 int x;
 int y;
-int z2a33;
+int z;
 int max;
 
 begin
@@ -11,7 +11,7 @@ read(y);
 read(z);
 max=x;
 
-if(y>1max)
+if(y>max)
 {
 	max=y;
 }

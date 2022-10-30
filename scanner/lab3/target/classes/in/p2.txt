@@ -1,5 +1,3 @@
-!!!! more symbols !#$ etc
-
 {
 int x;
 int y;
