@@ -18,6 +18,7 @@ public class Scanner {
     private final SymbolTable symbolTable = new SymbolTable();
     private String identifierRegex;
     private List<String> constantRegex;
+    private String numericalRegex;
     private List<String> reservedWords = List.of("char", "string", "int", "const", "if", "else", "read", "write", "while", "begin", "end");
     private List<String> separators = new ArrayList<>(List.of("(", ")", "[", "]", "{", "}", ";", " "));
     private List<String> operators = List.of("+", "-", "*", "/", "<", "<=", ">=", ">", "!=", "==", "=", "%");
@@ -50,7 +51,10 @@ public class Scanner {
                         this.operators.sort(Comparator.comparingInt(String::length).reversed());
                     }
                     case "reserved" -> this.reservedWords = tokens;
-                    case "constant" -> this.constantRegex = tokens;
+                    case "constant" -> {
+                        this.constantRegex = tokens;
+                        this.numericalRegex = tokens.get(0);
+                    }
                     case "identifier" -> this.identifierRegex = tokens.get(0);
                     default ->
                             throw new RuntimeException("Problem with token.in: Invalid type of token: " + parts.get(0));
@@ -161,8 +165,10 @@ public class Scanner {
                 }
                 index++;
             }
+            newCorrectTokens.remove(" ");
             return newCorrectTokens;
         }
+        correctTokens.remove(" ");
         return correctTokens;
     }
 
@@ -182,6 +188,12 @@ public class Scanner {
             }
         }
         return validConstant;
+    }
+
+    private boolean isValidNumerical(final String constant) {
+        Pattern pattern = Pattern.compile(numericalRegex);
+        Matcher matcher = pattern.matcher(constant);
+        return matcher.find();
     }
 
     private String classify(final List<String> tokens, int lineNumber) {
@@ -205,6 +217,7 @@ public class Scanner {
             int lineNumber = 1;
             while ((line = br.readLine()) != null) { // while not eof
                 List<String> tokens = detect(line);
+                tokens = fixNumericalConstants(tokens);
                 System.out.println(lineNumber + ": " + tokens);
                 errors.append(classify(tokens, lineNumber));
                 codify(tokens);
@@ -213,13 +226,32 @@ public class Scanner {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        this.errors = errors +"\n";
+        this.errors = errors + "\n";
         if (errors.toString().isEmpty()) {
             System.out.println("Correct!");
         } else {
             System.out.println(errors);
         }
         writeToFile();
+    }
+
+    private List<String> fixNumericalConstants(final List<String> tokens) {
+        final List<String> newTokens = new ArrayList<>();
+        for (int i = 0; i < tokens.size(); i++) {
+            if (tokens.get(i).equals("+") || tokens.get(i).equals("-")) {
+                String before = i - 1 >= 0 ? tokens.get(i - 1) : null;
+                String after = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
+                if (isValidNumerical(after) && ("=".equals(before) || "<".equals(before) || ">".equals(before) || "(".equals(before) || before == null)) {
+                    newTokens.add(tokens.get(i) + after);
+                    i++;
+                } else {
+                    newTokens.add(tokens.get(i));
+                }
+            } else {
+                newTokens.add(tokens.get(i));
+            }
+        }
+        return newTokens;
     }
 
     private boolean isSymbol(final String token) {
@@ -239,6 +271,7 @@ public class Scanner {
             throw new RuntimeException(e);
         }
     }
+
     private void writeST() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(stPath))) {
             bw.write("Symbol table is implemented using hash table and linked list for collision control.\n\n");
@@ -252,7 +285,15 @@ public class Scanner {
     private void codify(List<String> tokens) {
         for (final String token : tokens) {
             Pair<Integer, Integer> positions = isSymbol(token) ? symbolTable.insert(token) : new Pair<>(-1, -1);
-            pif.add(token, positions);
+            if (isValidIdentifier(token)) {
+                pif.add("id", positions);
+            } else {
+                if (isValidConstant(token)) {
+                    pif.add("const", positions);
+                } else {
+                    pif.add(token, positions);
+                }
+            }
         }
     }
 }

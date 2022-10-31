@@ -2,4 +2,4 @@ separator: ,(,),[,],{,},;,",',\n
 operator:+,-,*,/,<=,<,>=,>,!=,==,=,%
 reserved:char,string,int,const,if,else,read,write,while,begin,end
 identifier:^(_|[a-zA-Z])([a-zA-Z]|[0-9])*$
-constant:^(0|((-|/+)|([1-9][0-9]*)))$,^"[a-zA-Z ]*"$,^'[a-zA-Z ]'$
+constant:^(0|([-+]?([1-9][0-9]*)))$,^"[a-zA-Z ]*"$,^'[a-zA-Z ]'$

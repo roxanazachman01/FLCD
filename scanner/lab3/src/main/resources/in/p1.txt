@@ -11,7 +11,7 @@ read(y);
 read(z);
 max=x;
 
-if(y>max)
+if(y>=max)
 {
 	max=y;
 }

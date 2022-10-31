@@ -1,121 +1,151 @@
-Error on line 12: the token 'ad' is invalid!
-Error on line 13: the token 'sd; is invalid!
-Error on line 14: the token '; is invalid!
-Error on line 15: the token " lala; is invalid!
-Error on line 16: the token "; is invalid!
+Error on line 7: the token 012 is invalid!
+Error on line 8: the token 012 is invalid!
+Error on line 9: the token -0 is invalid!
+Error on line 10: the token +0 is invalid!
+Error on line 17: the token 'ad' is invalid!
+Error on line 18: the token 'sd; is invalid!
+Error on line 19: the token '; is invalid!
+Error on line 20: the token " lala; is invalid!
+Error on line 21: the token "; is invalid!
 
-Token: "{", Positions: -1=-1
-Token: "int", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "x", Positions: 120=0
-Token: ";", Positions: -1=-1
-Token: "int", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "y", Positions: 121=0
-Token: ";", Positions: -1=-1
-Token: "int", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "z2a33", Positions: 371=0
-Token: ";", Positions: -1=-1
-Token: "int", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "max", Positions: 326=0
-Token: ";", Positions: -1=-1
-Token: "string", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "lala", Positions: 410=0
-Token: ";", Positions: -1=-1
-Token: "char", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "b", Positions: 98=0
-Token: ";", Positions: -1=-1
-Token: "begin", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 97=0
 Token: "=", Positions: -1=-1
-Token: "'d'", Positions: 178=0
+Token: "const", Positions: 50=0
+Token: "+", Positions: -1=-1
+Token: "const", Positions: 51=0
 Token: ";", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 97=0
+Token: "=", Positions: -1=-1
+Token: "const", Positions: 94=0
+Token: "+", Positions: -1=-1
+Token: "const", Positions: 51=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 97=0
+Token: "=", Positions: -1=-1
+Token: "*", Positions: -1=-1
+Token: "const", Positions: 51=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "const", Positions: 193=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "const", Positions: 144=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "012", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "-", Positions: -1=-1
+Token: "012", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "-0", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "+0", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "const", Positions: 48=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: -1=-1
+Token: "(", Positions: -1=-1
+Token: "id", Positions: 97=0
+Token: "<", Positions: -1=-1
+Token: "const", Positions: 96=0
+Token: ")", Positions: -1=-1
+Token: "{", Positions: -1=-1
+Token: "}", Positions: -1=-1
+Token: "id", Positions: 98=0
+Token: "=", Positions: -1=-1
+Token: "const", Positions: 178=0
+Token: ";", Positions: -1=-1
+Token: "id", Positions: 98=0
 Token: "=", Positions: -1=-1
 Token: "'ad'", Positions: -1=-1
 Token: ";", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 98=0
 Token: "=", Positions: -1=-1
 Token: "'sd;", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 98=0
 Token: "=", Positions: -1=-1
-Token: "dsfs", Positions: 432=0
+Token: "id", Positions: 432=0
 Token: "';", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 98=0
 Token: "=", Positions: -1=-1
 Token: "" lala;", Positions: -1=-1
-Token: "b", Positions: 98=0
+Token: "id", Positions: 98=0
 Token: "=", Positions: -1=-1
-Token: " ", Positions: -1=-1
-Token: "lala2", Positions: 460=0
+Token: "id", Positions: 460=0
 Token: "";", Positions: -1=-1
-Token: "lala", Positions: 410=0
+Token: "id", Positions: 410=0
 Token: "=", Positions: -1=-1
-Token: ""asta este un string constant"", Positions: 824=0
+Token: "const", Positions: 824=0
 Token: ";", Positions: -1=-1
-Token: "c", Positions: 99=0
+Token: "id", Positions: 99=0
 Token: "=", Positions: -1=-1
-Token: ""another one dj khaled"", Positions: 68=0
+Token: "const", Positions: 178=1
 Token: ";", Positions: -1=-1
-Token: "x", Positions: 120=0
+Token: "id", Positions: 120=0
 Token: "=", Positions: -1=-1
-Token: "423", Positions: 153=0
+Token: "const", Positions: 153=0
 Token: ";", Positions: -1=-1
-Token: "y", Positions: 121=0
+Token: "id", Positions: 121=0
 Token: "=", Positions: -1=-1
-Token: "0", Positions: 48=0
+Token: "const", Positions: 48=0
 Token: ";", Positions: -1=-1
-Token: "z", Positions: 122=0
+Token: "id", Positions: 122=0
 Token: "=", Positions: -1=-1
-Token: "-", Positions: -1=-1
-Token: "3423", Positions: 204=0
+Token: "const", Positions: 249=0
 Token: ";", Positions: -1=-1
-Token: "read", Positions: -1=-1
+Token: "id", Positions: -1=-1
 Token: "(", Positions: -1=-1
-Token: "x", Positions: 120=0
+Token: "id", Positions: 120=0
 Token: ")", Positions: -1=-1
 Token: ";", Positions: -1=-1
-Token: "read", Positions: -1=-1
+Token: "id", Positions: -1=-1
 Token: "(", Positions: -1=-1
-Token: "y", Positions: 121=0
+Token: "id", Positions: 121=0
 Token: ")", Positions: -1=-1
 Token: ";", Positions: -1=-1
-Token: "read", Positions: -1=-1
+Token: "id", Positions: -1=-1
 Token: "(", Positions: -1=-1
-Token: "z", Positions: 122=0
+Token: "id", Positions: 122=0
 Token: ")", Positions: -1=-1
 Token: ";", Positions: -1=-1
-Token: "max", Positions: 326=0
+Token: "id", Positions: 326=0
 Token: "=", Positions: -1=-1
-Token: "x", Positions: 120=0
+Token: "id", Positions: 120=0
 Token: ";", Positions: -1=-1
-Token: "if", Positions: -1=-1
+Token: "id", Positions: -1=-1
 Token: "(", Positions: -1=-1
-Token: "y", Positions: 121=0
-Token: ">", Positions: -1=-1
-Token: "max", Positions: 326=0
-Token: ")", Positions: -1=-1
-Token: "{", Positions: -1=-1
-Token: "max", Positions: 326=0
-Token: "=", Positions: -1=-1
-Token: "y", Positions: 121=0
-Token: ";", Positions: -1=-1
-Token: "}", Positions: -1=-1
-Token: "if", Positions: -1=-1
-Token: "(", Positions: -1=-1
-Token: "z", Positions: 122=0
-Token: ">", Positions: -1=-1
-Token: "max", Positions: 326=0
+Token: "id", Positions: 121=0
+Token: ">=", Positions: -1=-1
+Token: "id", Positions: 326=0
 Token: ")", Positions: -1=-1
 Token: "{", Positions: -1=-1
-Token: "max", Positions: 326=0
+Token: "id", Positions: 326=0
 Token: "=", Positions: -1=-1
-Token: "z", Positions: 122=0
+Token: "id", Positions: 121=0
 Token: ";", Positions: -1=-1
 Token: "}", Positions: -1=-1
-Token: "end", Positions: -1=-1
+Token: "id", Positions: -1=-1
+Token: "(", Positions: -1=-1
+Token: "id", Positions: 122=0
+Token: ">", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: ")", Positions: -1=-1
+Token: "{", Positions: -1=-1
+Token: "id", Positions: 326=0
+Token: "=", Positions: -1=-1
+Token: "id", Positions: 122=0
+Token: ";", Positions: -1=-1
+Token: "}", Positions: -1=-1
+Token: "id", Positions: -1=-1
 Token: "}", Positions: -1=-1

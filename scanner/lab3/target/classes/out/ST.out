@@ -1,23 +1,33 @@
 Symbol table is implemented using hash table and linked list for collision control.
 
-Error on line 12: the token 'ad' is invalid!
-Error on line 13: the token 'sd; is invalid!
-Error on line 14: the token '; is invalid!
-Error on line 15: the token " lala; is invalid!
-Error on line 16: the token "; is invalid!
+Error on line 7: the token 012 is invalid!
+Error on line 8: the token 012 is invalid!
+Error on line 9: the token -0 is invalid!
+Error on line 10: the token +0 is invalid!
+Error on line 17: the token 'ad' is invalid!
+Error on line 18: the token 'sd; is invalid!
+Error on line 19: the token '; is invalid!
+Error on line 20: the token " lala; is invalid!
+Error on line 21: the token "; is invalid!
 
 (48, 0): 0
-(68, 0): "another one dj khaled"
+(50, 0): 2
+(51, 0): 3
+(94, 0): -1
+(96, 0): -3
+(97, 0): a
 (98, 0): b
 (99, 0): c
 (120, 0): x
 (121, 0): y
 (122, 0): z
+(144, 0): -12
 (153, 0): 423
 (178, 0): 'd'
-(204, 0): 3423
+(178, 1): "another one"
+(193, 0): +123
+(249, 0): -3423
 (326, 0): max
-(371, 0): z2a33
 (410, 0): lala
 (432, 0): dsfs
 (460, 0): lala2
