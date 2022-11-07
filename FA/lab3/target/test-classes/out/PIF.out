@@ -1,0 +1,29 @@
+Error on line 5: the token 324324sxcv is invalid!
+Error on line 7: the token 'lalala' is invalid!
+Error on line 8: the token "lala is invalid!
+
+Token: "{", Positions: -1=-1
+Token: "float", Positions: 534=0
+Token: " ", Positions: -1=-1
+Token: "x", Positions: 120=0
+Token: ";", Positions: -1=-1
+Token: "string", Positions: -1=-1
+Token: " ", Positions: -1=-1
+Token: "str", Positions: 345=0
+Token: ";", Positions: -1=-1
+Token: "string", Positions: -1=-1
+Token: " ", Positions: -1=-1
+Token: "str2", Positions: 395=0
+Token: ";", Positions: -1=-1
+Token: "int", Positions: -1=-1
+Token: " ", Positions: -1=-1
+Token: "324324sxcv", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "str", Positions: 345=0
+Token: "=", Positions: -1=-1
+Token: "'lalala'", Positions: -1=-1
+Token: ";", Positions: -1=-1
+Token: "str2", Positions: 395=0
+Token: "=", Positions: -1=-1
+Token: ""lala", Positions: -1=-1
+Token: "}", Positions: -1=-1

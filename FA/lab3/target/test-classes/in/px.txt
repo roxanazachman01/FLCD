@@ -1,0 +1,36 @@
+{
+int x;
+int y;
+int z2a33;
+int max;
+string lala;
+char b;
+
+begin
+
+b='d';
+b='ad';
+b='sd;
+b=dsfs';
+b=" lala;
+b= lala2";
+lala="asta este un string constant";c="another one dj khaled";
+x=423;
+y=0;
+z=-3423;
+read(x);
+read(y);
+read(z);
+max=x;
+
+if(y>max)
+{
+	max=y;
+}
+if(z>max)
+{
+	max=z;
+}
+
+end
+}
