@@ -18,14 +18,14 @@ public class Main {
         System.out.println("Symbol Table: " + symbolTable);
         */
 
-//        Scanner scanner = new Scanner("in/px.txt", "in/token.in", "out/PIF.out", "out/ST.out");
+        Scanner scanner = new Scanner("in/px.txt", "in/token.in", "out/PIF.out", "out/ST.out");
         // the out files are written in the TARGET/classes/out because that's what java does
-//        scanner.tokenize();
+        scanner.tokenize();
 
-        final FiniteAutomata finiteAutomata = new FiniteAutomata("in/FA2.in");
-
-        final MenuFA menuFA = new MenuFA(finiteAutomata);
-        menuFA.run();
+//        final FiniteAutomata finiteAutomata = new FiniteAutomata("in/integerFA.in");
+//
+//        final MenuFA menuFA = new MenuFA(finiteAutomata);
+//        menuFA.run();
 
 
     }

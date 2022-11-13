@@ -6,8 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Scanner {
     private final String filePath;
@@ -173,27 +171,30 @@ public class Scanner {
     }
 
     private boolean isValidIdentifier(final String identifier) {
-        Pattern pattern = Pattern.compile(identifierRegex);
-        Matcher matcher = pattern.matcher(identifier);
-        return matcher.find();
+//        Pattern pattern = Pattern.compile(identifierRegex);
+//        Matcher matcher = pattern.matcher(identifier);
+//        return matcher.find();
+        return FiniteAutomata.verifyValidIdentifier(identifier);
     }
 
     private boolean isValidConstant(final String constant) {
-        boolean validConstant = false;
-        for (final String regex : this.constantRegex) {
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(constant);
-            if (matcher.find()) {
-                validConstant = true;
-            }
-        }
-        return validConstant;
+//        boolean validConstant = false;
+//        for (final String regex : this.constantRegex) {
+//            Pattern pattern = Pattern.compile(regex);
+//            Matcher matcher = pattern.matcher(constant);
+//            if (matcher.find()) {
+//                validConstant = true;
+//            }
+//        }
+//        return validConstant;
+        return FiniteAutomata.verifyValidConstant(constant);
     }
 
     private boolean isValidNumerical(final String constant) {
-        Pattern pattern = Pattern.compile(numericalRegex);
-        Matcher matcher = pattern.matcher(constant);
-        return matcher.find();
+//        Pattern pattern = Pattern.compile(numericalRegex);
+//        Matcher matcher = pattern.matcher(constant);
+//        return matcher.find();
+        return FiniteAutomata.verifyValidIntegerConstant(constant);
     }
 
     private String classify(final List<String> tokens, int lineNumber) {

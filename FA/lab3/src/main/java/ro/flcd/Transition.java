@@ -1,5 +1,7 @@
 package ro.flcd;
 
+import java.util.Objects;
+
 public class Transition {
     private final String state;
     private final String accepted;
@@ -30,6 +32,18 @@ public class Transition {
 
     public String getResult() {
         return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transition that)) return false;
+        return getState().equals(that.getState()) && getAccepted().equals(that.getAccepted()) && getResult().equals(that.getResult());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getState(), getAccepted(), getResult());
     }
 
     @Override
