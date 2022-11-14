@@ -1,5 +1,7 @@
 package ro.flcd;
 
+import javafx.util.Pair;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +20,8 @@ public class FiniteAutomata { // validare
     private boolean isDFA;
     private Set<String> states;
     private Set<String> alphabet;
-    private List<Transition> transitions = new ArrayList<>();
+    private Set<Transition> transitions = new HashSet<>();
+    private Map<Pair<String, String>, List<String>> transitionsMap = new HashMap<>();
     private String initialState;
     private Set<String> finalStates;
 
@@ -118,7 +121,7 @@ public class FiniteAutomata { // validare
         return alphabet;
     }
 
-    public List<Transition> getTransitions() {
+    public Set<Transition> getTransitions() {
         return transitions;
     }
 
@@ -153,6 +156,11 @@ public class FiniteAutomata { // validare
                 }
                 for (String accepted : allAccepted) {
                     transitions.add(new Transition(state, accepted, result));
+                    var key = new Pair<>(state, accepted);
+                    if (!transitionsMap.containsKey(key)) {
+                        transitionsMap.put(key, new ArrayList<>());
+                    }
+                    transitionsMap.get(key).add(result);
                 }
             }
             initialState = br.readLine().trim();
@@ -207,13 +215,21 @@ public class FiniteAutomata { // validare
 
     private boolean checkIfDFA() {
         // d(q,a)=q' and d(q,a)=q'' not good!
-        for (int i = 0; i < transitions.size() - 1; i++) {
-            for (int j = i + 1; j < transitions.size(); j++) {
-                final Transition t1 = transitions.get(i);
-                final Transition t2 = transitions.get(j);
-                if (Transition.haveSameState(t1, t2) && Transition.haveSameAccepted(t1, t2) && !Transition.haveSameResult(t1, t2)) {
-                    return false;
-                }
+
+//        for (int i = 0; i < transitions.size() - 1; i++) {
+//            for (int j = i + 1; j < transitions.size(); j++) {
+//                final Transition t1 = transitions.get(i);
+//                final Transition t2 = transitions.get(j);
+//                if (Transition.haveSameState(t1, t2) && Transition.haveSameAccepted(t1, t2) && !Transition.haveSameResult(t1, t2)) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+
+        for (var results : transitionsMap.values()) {
+            if (results.size() > 1) {
+                return false;
             }
         }
         return true;
