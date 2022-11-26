@@ -1,5 +1,8 @@
 package ro.flcd.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Terminal implements TermOrNonTerm{
     private final String value;
 
@@ -8,7 +11,7 @@ public class Terminal implements TermOrNonTerm{
     }
 
     @Override
-    public String get() {
+    public String value() {
         return this.value;
     }
 
@@ -20,5 +23,10 @@ public class Terminal implements TermOrNonTerm{
     @Override
     public boolean isEpsilon() {
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

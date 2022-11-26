@@ -1,5 +1,8 @@
 package ro.flcd.domain;
 
+import lombok.Getter;
+
+@Getter
 public class Nonterminal implements TermOrNonTerm {
     private final String value;
 
@@ -8,7 +11,7 @@ public class Nonterminal implements TermOrNonTerm {
     }
 
     @Override
-    public String get() {
+    public String value() {
         return this.value;
     }
 
@@ -22,4 +25,8 @@ public class Nonterminal implements TermOrNonTerm {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return value;
+    }
 }

@@ -1,10 +1,9 @@
 package ro.flcd.domain;
 
-import ro.flcd.domain.Type;
-
 public interface TermOrNonTerm {
-    String get();
+    String value();
 
     boolean isTerminal();
+
     boolean isEpsilon();
 }

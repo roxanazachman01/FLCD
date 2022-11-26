@@ -6,56 +6,41 @@ import ro.flcd.domain.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
 public class Grammar {
-    private String filePath;
+    private final String filePath;
+    private final Set<Production> productions = new HashSet<>();
     private Set<String> nonterminals = new HashSet<>();
     private Set<String> terminals = new HashSet<>();
-    private Set<Production> productions = new HashSet<>();
     private String startSymbol;
     private boolean isCFG;
 
     public Grammar(final String filePath) {
         this.filePath = Grammar.class.getClassLoader().getResource(filePath).getPath();
-        this.loadFromFile(filePath);
+        this.loadFromFile();
     }
 
-    public void loadFromFile(final String filePath) {
+    public void loadFromFile() {
         this.loadGrammar();
         this.validateGrammar();
         this.isCFG = checkIfCFG();
     }
 
     private boolean checkIfCFG() {
-        return false;
+        for (var production : productions) {
+            if (production.getLeftHS().size() != 1) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void validateGrammar() {
-        for (var terminal : terminals) {
-            if (!terminal.equals(Type.EPSILON.toString()) && terminal.length() != 1) {
-                throw new RuntimeException("lala1");
-            }
-            if (!Character.isLowerCase(terminal.charAt(0))) {
-                System.out.println(terminal);
-                throw new RuntimeException("lala2");
-            }
-        }
-        for (var nonterminal : nonterminals) {
-            if (nonterminal.length() != 1) {
-                throw new RuntimeException("lala3");
-            }
-            if (!Character.isUpperCase(nonterminal.charAt(0))) {
-                throw new RuntimeException("lala4");
-            }
-        }
         if (!nonterminals.contains(startSymbol)) {
-            throw new RuntimeException("lala5");
+            throw new RuntimeException("Starting symbol is not in the set of non-terminals.");
         }
     }
 
@@ -69,23 +54,12 @@ public class Grammar {
                 if (parts.size() != 2) {
                     throw new RuntimeException("Invalid file format.");
                 }
-                var leftHS = parts.get(0);
-                var rhsParts = parts.get(1).split("|");
-
+                var termOrNonTermList = Arrays.stream(parts.get(0).split(",")).toList();
+                var rhsParts = parts.get(1).split("\\|");
+                List<TermOrNonTerm> leftHS = getTermOrNontermList(termOrNonTermList);
                 for (var part : rhsParts) {
-                    var termOrNonTermList = Arrays.stream(part.split(",")).toList();
-                    var rightHS = new ArrayList<TermOrNonTerm>();
-                    for (var termOrNonTerm : termOrNonTermList) {//todo validate nonterminals are NOT lowercase and terminals NOT uppercase
-                        if (termOrNonTerm.equals(Type.EPSILON.toString())) {
-                            rightHS.add(new Epsilon(termOrNonTerm));
-                        } else {
-                            if (terminals.contains(termOrNonTerm) && Character.isLowerCase(termOrNonTerm.charAt(0)) && termOrNonTerm.length() == 1) {
-                                rightHS.add(new Terminal(termOrNonTerm));
-                            } else if (nonterminals.contains(termOrNonTerm) && Character.isUpperCase(termOrNonTerm.charAt(0)) && termOrNonTerm.length() == 1) {
-                                rightHS.add(new Nonterminal(termOrNonTerm));
-                            }
-                        }
-                    }
+                    termOrNonTermList = Arrays.stream(part.split(",")).toList();
+                    var rightHS = getTermOrNontermList(termOrNonTermList);
                     productions.add(new Production(leftHS, rightHS));
                 }
             }
@@ -93,5 +67,25 @@ public class Grammar {
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private List<TermOrNonTerm> getTermOrNontermList(List<String> termOrNonTermList) {
+        List<TermOrNonTerm> hs = new ArrayList<>();
+        for (var termOrNonTerm : termOrNonTermList) {
+            if (termOrNonTerm.equals(Type.EPSILON.toString())) {
+                hs.add(new Epsilon(termOrNonTerm));
+            } else if (terminals.contains(termOrNonTerm)) {
+                hs.add(new Terminal(termOrNonTerm));
+            } else if (nonterminals.contains(termOrNonTerm)) {
+                hs.add(new Nonterminal(termOrNonTerm));
+            } else {
+                System.out.println(termOrNonTerm);
+                throw new RuntimeException("Element in prod rule is neither terminal nor non-terminal.");
+            }
+        }
+        return hs;
+    }
+    public String getProductions(){
+        return productions.stream().map(Production::toString).collect(Collectors.joining("\n"));
     }
 }
