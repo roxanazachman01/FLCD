@@ -1,12 +1,11 @@
 package ro.flcd.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
 public class Epsilon extends Terminal {
-    public Epsilon(String value) {
-        super(value);
+    public Epsilon() {
+        super("EPSILON");
     }
 
     @Override

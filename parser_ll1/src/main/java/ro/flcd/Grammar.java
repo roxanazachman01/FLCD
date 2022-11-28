@@ -73,7 +73,7 @@ public class Grammar {
         List<TermOrNonTerm> hs = new ArrayList<>();
         for (var termOrNonTerm : termOrNonTermList) {
             if (termOrNonTerm.equals(Type.EPSILON.toString())) {
-                hs.add(new Epsilon(termOrNonTerm));
+                hs.add(new Epsilon());
             } else if (terminals.contains(new Terminal(termOrNonTerm))) {
                 hs.add(new Terminal(termOrNonTerm));
             } else if (nonterminals.contains(new Nonterminal(termOrNonTerm))) {
@@ -85,12 +85,11 @@ public class Grammar {
         }
         return hs;
     }
-    public String getProductions(){
-        return productions.stream().map(Production::toString).collect(Collectors.joining("\n"));
-    }
+//    public String getProductions(){
+//        return productions.stream().map(Production::toString).collect(Collectors.joining("\n"));
+//    }
 
-    public List<Production>getProductionsOfNonterminal(final String str){
-        var nonterm = new Nonterminal(str);
+    public List<Production>getProductionsOfNonterminal(final Nonterminal nonterm){
         if (!nonterminals.contains(nonterm)){
             throw new RuntimeException(nonterm+ " is not a nonterminal.");
         }
@@ -101,5 +100,24 @@ public class Grammar {
             }
         }
         return result;
+    }
+    public List<Production>getProductionsContainingNonterminalRHS(final Nonterminal nonterm){
+        if (!nonterminals.contains(nonterm)){
+            throw new RuntimeException(nonterm+ " is not a nonterminal.");
+        }
+        List<Production> result = new ArrayList<>();
+        for(var prod:productions){
+            if (prod.getRightHS().contains(nonterm)){
+                result.add(prod);
+            }
+        }
+        return result;
+    }
+    public TermOrNonTerm getElementAfterNontermInProd(final Production prod, final Nonterminal nonterminal){
+        var index = prod.getRightHS().indexOf(nonterminal);
+        if (index==prod.getRightHS().size()-1){
+            return new Epsilon();
+        }
+        return prod.getRightHS().get(index+1);
     }
 }

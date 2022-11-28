@@ -7,7 +7,7 @@ declaration#type,identifier,;
 type1#int|char|string
 arraydecl#type1,[,constnr,]
 arrayitem#identifier,[,constnr,]
-type#type|arraydecl
+type#type1|arraydecl
 cmpdstmt#begin,stmtlist,end
 stmtlist#stmt|stmt,stmtlist
 stmt#simplstmt,;|structstmt,;

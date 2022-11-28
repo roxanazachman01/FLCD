@@ -1,0 +1,12 @@
+S,A,B,C,D
+a,+,*,(,)
+8
+S#B,A
+A#+,B,A
+A#EPSILON
+B#D,C
+C#*,D,C
+C#EPSILON
+D#(,S,)
+D#a
+S

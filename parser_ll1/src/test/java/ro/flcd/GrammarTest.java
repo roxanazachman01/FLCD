@@ -24,7 +24,7 @@ public class GrammarTest {
 
         assertThat(grammar.isCFG()).isTrue();
 
-        assertThat(grammar.getProductionsOfNonterminal("condition").get(0)
+        assertThat(grammar.getProductionsOfNonterminal(new Nonterminal("condition")).get(0)
                 .getRightHS()).contains(new Nonterminal("relation"));
     }
 }
