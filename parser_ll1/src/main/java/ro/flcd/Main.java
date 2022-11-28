@@ -8,5 +8,6 @@ public class Main {
         System.out.println("Productions:\n"+grammar.getProductions()+"\n");
         System.out.println("Starting symbol: "+grammar.getStartSymbol()+"\n");
         System.out.println(grammar.isCFG()?"Is cfg":"Is not cfg");
+        System.out.println(grammar.getProductionsOfNonterminal("type"));
     }
 }

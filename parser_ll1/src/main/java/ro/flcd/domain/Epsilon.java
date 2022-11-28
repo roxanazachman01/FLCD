@@ -1,10 +1,9 @@
 package ro.flcd.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class Epsilon extends Terminal {
     public Epsilon(String value) {
         super(value);

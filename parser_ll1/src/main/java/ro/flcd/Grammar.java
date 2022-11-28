@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 public class Grammar {
     private final String filePath;
     private final Set<Production> productions = new HashSet<>();
-    private Set<String> nonterminals = new HashSet<>();
-    private Set<String> terminals = new HashSet<>();
-    private String startSymbol;
+    private Set<Nonterminal> nonterminals = new HashSet<>();
+    private Set<Terminal> terminals = new HashSet<>();
+    private Nonterminal startSymbol;
     private boolean isCFG;
 
     public Grammar(final String filePath) {
@@ -46,8 +46,8 @@ public class Grammar {
 
     private void loadGrammar() {
         try (BufferedReader br = new BufferedReader(new FileReader(this.filePath))) {
-            nonterminals = Arrays.stream(br.readLine().trim().split(",")).collect(Collectors.toSet());
-            terminals = Arrays.stream(br.readLine().trim().split(",")).collect(Collectors.toSet());
+            nonterminals = Arrays.stream(br.readLine().trim().split(",")).map(Nonterminal::new).collect(Collectors.toSet());
+            terminals = Arrays.stream(br.readLine().trim().split(",")).map(Terminal::new).collect(Collectors.toSet());
             int nrLinesToRead = Integer.parseInt(br.readLine().trim());
             for (int i = 0; i < nrLinesToRead; i++) {
                 var parts = Arrays.stream(br.readLine().trim().split("#")).toList();
@@ -63,7 +63,7 @@ public class Grammar {
                     productions.add(new Production(leftHS, rightHS));
                 }
             }
-            startSymbol = br.readLine().trim();
+            startSymbol = new Nonterminal(br.readLine().trim());
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
@@ -74,18 +74,32 @@ public class Grammar {
         for (var termOrNonTerm : termOrNonTermList) {
             if (termOrNonTerm.equals(Type.EPSILON.toString())) {
                 hs.add(new Epsilon(termOrNonTerm));
-            } else if (terminals.contains(termOrNonTerm)) {
+            } else if (terminals.contains(new Terminal(termOrNonTerm))) {
                 hs.add(new Terminal(termOrNonTerm));
-            } else if (nonterminals.contains(termOrNonTerm)) {
+            } else if (nonterminals.contains(new Nonterminal(termOrNonTerm))) {
                 hs.add(new Nonterminal(termOrNonTerm));
             } else {
                 System.out.println(termOrNonTerm);
-                throw new RuntimeException("Element in prod rule is neither terminal nor non-terminal.");
+                throw new RuntimeException("Element in prod rule is  neither terminal nor non-terminal.");
             }
         }
         return hs;
     }
     public String getProductions(){
         return productions.stream().map(Production::toString).collect(Collectors.joining("\n"));
+    }
+
+    public List<Production>getProductionsOfNonterminal(final String str){
+        var nonterm = new Nonterminal(str);
+        if (!nonterminals.contains(nonterm)){
+            throw new RuntimeException(nonterm+ " is not a nonterminal.");
+        }
+        List<Production> result = new ArrayList<>();
+        for(var prod:productions){
+            if (prod.getLeftHS().contains(nonterm)){
+                result.add(prod);
+            }
+        }
+        return result;
     }
 }

@@ -21,5 +21,6 @@ structstmt#cmpdstmt|ifstmt|whilestmt
 ifstmt#if,(,condition,),{,stmtlist,},else,{,stmtlist,}
 while#while,(,condition,),{,stmtlist,}
 condition#expression,relation,expression
-relation#<,<=,>=,>,==,!=
+relation#<|<=|>=|>|==|!=
 program
+

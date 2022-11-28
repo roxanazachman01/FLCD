@@ -1,8 +1,10 @@
 package ro.flcd.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
+@EqualsAndHashCode
 public class Terminal implements TermOrNonTerm{
     private final String value;
 
