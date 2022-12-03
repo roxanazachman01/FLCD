@@ -12,8 +12,10 @@ public class Main {
 //        System.out.println(grammar.isCFG()?"Is cfg":"Is not cfg");
 //        System.out.println(grammar.getProductionsOfNonterminal(new Nonterminal("type")));
 
-        Parser parser = new Parser();
-        parser.firstAlgorithm();
-        System.out.println(parser.getFirst());
+
+        Parser parser = new Parser("in/g4.txt");
+        System.out.println("First: "+parser.getFirst());
+        System.out.println("Follow: "+parser.getFollow());
+
     }
 }

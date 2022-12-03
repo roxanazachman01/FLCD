@@ -72,7 +72,7 @@ public class Grammar {
     private List<TermOrNonTerm> getTermOrNontermList(List<String> termOrNonTermList) {
         List<TermOrNonTerm> hs = new ArrayList<>();
         for (var termOrNonTerm : termOrNonTermList) {
-            if (termOrNonTerm.equals(Type.EPSILON.toString())) {
+            if (termOrNonTerm.equals(Type.EPSILON.toString())&& terminals.contains(new Epsilon())) {
                 hs.add(new Epsilon());
             } else if (terminals.contains(new Terminal(termOrNonTerm))) {
                 hs.add(new Terminal(termOrNonTerm));
@@ -116,7 +116,7 @@ public class Grammar {
     public TermOrNonTerm getElementAfterNontermInProd(final Production prod, final Nonterminal nonterminal){
         var index = prod.getRightHS().indexOf(nonterminal);
         if (index==prod.getRightHS().size()-1){
-            return new Epsilon();
+            return null;
         }
         return prod.getRightHS().get(index+1);
     }

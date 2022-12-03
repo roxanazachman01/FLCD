@@ -1,0 +1,8 @@
+S,A,B,C
++,*,EPSILON,-
+4
+S#A,B,C
+A#*|EPSILON
+B#+
+C#-|EPSILON
+S

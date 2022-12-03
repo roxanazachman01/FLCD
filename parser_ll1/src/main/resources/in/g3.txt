@@ -1,5 +1,5 @@
 S,A,B,C,D
-a,+,*,(,)
+a,+,*,(,),EPSILON
 8
 S#B,A
 A#+,B,A
