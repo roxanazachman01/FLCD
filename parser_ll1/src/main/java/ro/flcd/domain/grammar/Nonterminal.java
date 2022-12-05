@@ -1,4 +1,4 @@
-package ro.flcd.domain;
+package ro.flcd.domain.grammar;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,6 +24,11 @@ public class Nonterminal implements TermOrNonTerm {
 
     @Override
     public boolean isEpsilon() {
+        return false;
+    }
+
+    @Override
+    public boolean isDollar() {
         return false;
     }
 

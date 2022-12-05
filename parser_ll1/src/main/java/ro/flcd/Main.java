@@ -1,7 +1,5 @@
 package ro.flcd;
 
-import ro.flcd.domain.Parser;
-
 public class Main {
     public static void main(String[] args) {
 //        final Grammar grammar = new Grammar("in/g2.txt");

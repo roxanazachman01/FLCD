@@ -1,4 +1,4 @@
-package ro.flcd.domain;
+package ro.flcd.domain.grammar;
 
 import lombok.Getter;
 

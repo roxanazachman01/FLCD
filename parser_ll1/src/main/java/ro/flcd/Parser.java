@@ -1,7 +1,8 @@
-package ro.flcd.domain;
+package ro.flcd;
 
 import lombok.Getter;
-import ro.flcd.Grammar;
+import org.apache.commons.lang3.tuple.Pair;
+import ro.flcd.domain.grammar.*;
 
 import java.util.*;
 
@@ -201,5 +202,26 @@ public class Parser {
 
         } while (!finishedTable(followTable));
         follow = followTable.get(followTable.size() - 1);
+    }
+
+    //    private Set<Terminal> handleNonterminalCase(List<TermOrNonTerm> rhs) {
+//        Set<Terminal> toAdd = new HashSet<>();
+//        int index;
+//        for (index = 0; index < rhs.size(); index++) {
+//            var prevOfNonterm = getPreviousFirstOfNonterm(rhs.get(index));
+//            toAdd.addAll(prevOfNonterm);
+//            if (!prevOfNonterm.contains(new Epsilon())) {
+//                break;
+//            }
+//        }
+//        if (index != rhs.size()) {
+//            toAdd.remove(new Epsilon());
+//        }
+//        return toAdd;
+//    }
+    public Pair<Set<Terminal>, Integer> getFirstAndIndexForRhs(final Production prod) {
+        var index = grammar.getProductions().indexOf(prod);
+        var firstOfRhs = handleNonterminalCase(prod.getRightHS());
+        return Pair.of(firstOfRhs, index);
     }
 }

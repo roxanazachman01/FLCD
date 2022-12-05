@@ -1,8 +1,9 @@
 package ro.flcd;
 
 import org.junit.Test;
-import ro.flcd.domain.Nonterminal;
-import ro.flcd.domain.Terminal;
+import ro.flcd.domain.grammar.Grammar;
+import ro.flcd.domain.grammar.Nonterminal;
+import ro.flcd.domain.grammar.Terminal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

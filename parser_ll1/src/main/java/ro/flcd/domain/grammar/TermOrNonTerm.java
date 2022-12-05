@@ -1,4 +1,4 @@
-package ro.flcd.domain;
+package ro.flcd.domain.grammar;
 
 public interface TermOrNonTerm {
     String value();
@@ -6,4 +6,6 @@ public interface TermOrNonTerm {
     boolean isTerminal();
 
     boolean isEpsilon();
+
+    boolean isDollar();
 }

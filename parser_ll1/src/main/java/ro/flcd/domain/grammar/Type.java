@@ -1,4 +1,4 @@
-package ro.flcd.domain;
+package ro.flcd.domain.grammar;
 
 public enum Type {
     TERMINAL, NONTERMINAL,EPSILON

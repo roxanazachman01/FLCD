@@ -1,7 +1,6 @@
-package ro.flcd;
+package ro.flcd.domain.grammar;
 
 import lombok.Getter;
-import ro.flcd.domain.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
 @Getter
 public class Grammar {
     private final String filePath;
-    private final Set<Production> productions = new HashSet<>();
+    private final List<Production> productions = new ArrayList<>();
     private Set<Nonterminal> nonterminals = new HashSet<>();
     private Set<Terminal> terminals = new HashSet<>();
     private Nonterminal startSymbol;

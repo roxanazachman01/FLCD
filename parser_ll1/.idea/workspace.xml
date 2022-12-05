@@ -5,21 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Parser documentation+github link.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Parser documentation+github link.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Parser.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/in/g4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ro/flcd/domain/ParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Grammar documentation+github link.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Grammar documentation+github link.pdf" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/DollarSign.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTableValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/SpecialTableValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Grammar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Grammar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Grammar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Grammar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/in/g3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/g3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Grammar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/Grammar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/ParserLL1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Epsilon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Epsilon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Nonterminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Nonterminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/TermOrNonTerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/TermOrNonTerm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Terminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ro/flcd/GrammarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ro/flcd/GrammarTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ro/flcd/domain/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ro/flcd/domain/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Grammar.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Epsilon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Epsilon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/ParserLL1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Epsilon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Nonterminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Production.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/TermOrNonTerm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Terminal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/domain/Type.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +41,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -61,7 +73,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/FA/lab3",
+    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/parser_ll1",
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
@@ -71,6 +83,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ztr53\Documents\GitHub\FLCD\parser_ll1\src\main\resources\in" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ro.flcd" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="ro.flcd.domain" />
@@ -83,7 +98,7 @@
       <module name="parser_ll1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ro.flcd.*" />
+          <option name="PATTERN" value="ro.flcd.domain.grammar.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,7 +110,7 @@
       <module name="parser_ll1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ro.flcd.*" />
+          <option name="PATTERN" value="ro.flcd.domain.grammar.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,7 +125,7 @@
       <module name="parser_ll1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ro.flcd.domain.*" />
+          <option name="PATTERN" value="ro.flcd.domain.grammar.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,7 +140,7 @@
       <module name="parser_ll1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ro.flcd.domain.*" />
+          <option name="PATTERN" value="ro.flcd.domain.grammar.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,7 +173,9 @@
       <workItem from="1669481976316" duration="12845000" />
       <workItem from="1669575273958" duration="4172000" />
       <workItem from="1669630109591" duration="6127000" />
-      <workItem from="1670024259139" duration="18939000" />
+      <workItem from="1670024259139" duration="19224000" />
+      <workItem from="1670175198961" duration="72000" />
+      <workItem from="1670234697062" duration="5908000" />
     </task>
     <servers />
   </component>
