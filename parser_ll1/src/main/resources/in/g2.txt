@@ -1,6 +1,10 @@
-program,decllist,cmpdstmt,declaration,type,identifier,type1,arraydecl,arrayitem,constnr,stmtlist,stmt,simplstmt,structstmt,assignstmt,iostmt,expression,term,factor,constchar,conststring,structstmt,cmpdstmt,ifstmt,whilestmt,condition,relation
-{,},;,int,char,string,[,],begin,end,=,+,-,*,%,/,(,),read,write,if,else,while,<,<=,>=,>,==,!=
-21
+program,letter,digit,letterdigitseq,identifier,expression1,term1,decllist,cmpdstmt,declaration,type,identifier,type1,arraydecl,arrayitem,constnr,stmtlist,stmt,simplstmt,structstmt,assignstmt,iostmt,expression,term,factor,constchar,conststring,structstmt,cmpdstmt,ifstmt,whilestmt,condition,relation
+{,},EPSILON,;,int,char,string,[,],begin,end,=,+,-,*,%,/,(,),read,write,if,else,while,<,<=,>=,>,==,!=,_,0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+27
+letter#A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
+digit#0|1|2|3|4|5|6|7|8|9
+letterdigitseq#letter|digit|letter,letterdigitseq|digit,letterdigitseq
+identifier#_,letterdigitseq|letter,letterdigitseq
 program#{,decllist,cmpdstmt,}
 decllist#declaration|declaration,decllist
 declaration#type,identifier,;
@@ -13,8 +17,10 @@ stmtlist#stmt|stmt,stmtlist
 stmt#simplstmt,;|structstmt,;
 simplstmt#assignstmt|iostmt
 assignstmt#identifier,=,expression|arrayitem,=,expression
-expression#expression,+,term|expression,-,term|term
-term#term,*,factor|term,%,factor|term,/,factor|factor
+expression#term,expression1
+expression1#+,expression1|-,expression1|EPSILON
+term#factor,term1
+term1#*,term1|%,term1|/,term1
 factor#(,expression,)|identifier|constnr
 iostmt#read,(,identifier,)|read,(,arrayitem,)|write,(,arrayitem,)|write,(,identifier,)|write,(,constnr,)|write,(,constchar,)|write,(,conststring,)
 structstmt#cmpdstmt|ifstmt|whilestmt
