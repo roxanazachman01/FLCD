@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsetree/ParseTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsetree/ParseTreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/NormalTableValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/out/configs.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/out/parseTree.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/grammar/Terminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTableValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTableValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/SpecialTableValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/SpecialTableValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/in/g2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/g2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +51,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/ztr53/Desktop/Lab 5/Lab 5/Lab5",
+    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/parser_ll1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -170,7 +163,9 @@
       <workItem from="1670431823538" duration="199000" />
       <workItem from="1670432212134" duration="1246000" />
       <workItem from="1670527110361" duration="619000" />
-      <workItem from="1670754974894" duration="31196000" />
+      <workItem from="1670754974894" duration="31255000" />
+      <workItem from="1670865905881" duration="2123000" />
+      <workItem from="1671359264023" duration="6142000" />
     </task>
     <servers />
   </component>

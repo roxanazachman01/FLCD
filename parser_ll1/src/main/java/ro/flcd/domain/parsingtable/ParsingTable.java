@@ -6,16 +6,16 @@ import ro.flcd.domain.grammar.Epsilon;
 import ro.flcd.domain.grammar.Grammar;
 import ro.flcd.domain.grammar.TermOrNonTerm;
 import ro.flcd.domain.grammar.Terminal;
-import ro.flcd.domain.parsetree.ParseTree;
-import ro.flcd.domain.parsetree.ParseTreeNode;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.*;
 
 public class ParsingTable {
     private final Parser parser;
 
     private final Grammar grammar;
-    //Pair<ParsingTableValue, Integer> -> PARSINGTABLEVALUE should include rhs of prod!! List<TermOrNonTerm> rightHS;
+
     private final Map<Pair<TermOrNonTerm, TermOrNonTerm>, ParsingTableValue> table = new HashMap<>();
 
     private final List<Pair<TermOrNonTerm, Pair<Integer, Integer>>> parseTable = new ArrayList<>();
@@ -120,8 +120,9 @@ public class ParsingTable {
     public void parseSequence(List<Terminal> sequence) {
         Configuration configuration = Configuration.getInitialConfig(table, sequence, grammar.getStartSymbol());
         boolean run = true, error = false;
+        List<Configuration> configurations = new ArrayList<>();
         while (run) {
-            System.out.println(configuration);
+            configurations.add(configuration.deepCopy());
             if (configuration.shouldPush()) {
                 configuration.push();
             } else {
@@ -135,7 +136,8 @@ public class ParsingTable {
                 }
             }
         }
-        System.out.println(configuration);
+        configurations.add(configuration.deepCopy());
+        writeConfigToFile(configurations);
         if (error) {
             System.out.println("Sequence is not accepted.");
         } else {
@@ -144,42 +146,60 @@ public class ParsingTable {
         }
     }
 
+    private void writeConfigToFile(List<Configuration> configurations) {
+        var filePath = Grammar.class.getClassLoader().getResource("out/configs.out").getPath();
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
+            for (var c:configurations){
+                bw.write(c.toString());
+                bw.write("\n");
+            }
+            bw.flush();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void constructParseTree(List<Integer> productionsIndexes) {
-        Queue<ParseTreeNode> qq = new LinkedList<>(); // todo: pair with index in the parseTable to use for parent
-        ParseTreeNode root = new ParseTreeNode(grammar.getStartSymbol());
-        ParseTree parseTree = new ParseTree(root);
-        qq.add(root);
-        int tableIndex = 1;
-        int parentTableIndex = 0;
-        parseTable.add(Pair.of(root.getValue(), Pair.of(-1, -1)));
+        List<Integer> qq = new ArrayList<>();
+        qq.add(0);
+        parseTable.add(Pair.of(grammar.getStartSymbol(), Pair.of(-1, -1)));
         for (var prodIndex : productionsIndexes) {
             var prod = grammar.getProductions().get(prodIndex);
-            var parent = qq.remove();
+            var parent = qq.remove(0);
 
-            var leftNode = new ParseTreeNode(prod.getRightHS().get(0));
-            leftNode.setParent(parent);
-            leftNode.setLeftSibling(null);
-            System.out.println(parent + " " + leftNode);
-
-            parseTable.add(Pair.of(leftNode.getValue(), Pair.of(parentTableIndex, -1)));
-
-            for (int index = 1; index < prod.getRightHS().size(); index++) {
-                var currentNode = new ParseTreeNode(prod.getRightHS().get(index));
-                currentNode.setLeftSibling(leftNode);
-                currentNode.setParent(parent);
-                leftNode.setRightSibling(currentNode);
-                qq.add(leftNode);
-                leftNode = currentNode;
-                System.out.println(parent + " " + leftNode);
-
-                parseTable.add(Pair.of(leftNode.getValue(), Pair.of(parentTableIndex, parseTable.size()-1)));
-                tableIndex++;
+            var leftNode = prod.getRightHS().get(0);
+            parseTable.add(Pair.of(leftNode, Pair.of(parent, -1)));
+            List<Integer> siblings = new ArrayList<>();
+            if (!leftNode.isTerminal()) {
+                siblings.add(parseTable.size() - 1);
             }
-            qq.add(leftNode);
-            parentTableIndex++;
+            for (int index = 1; index < prod.getRightHS().size(); index++) {
+                var currentNode = prod.getRightHS().get(index);
+                parseTable.add(Pair.of(currentNode, Pair.of(parent, parseTable.size() - 1)));
+                if (!currentNode.isTerminal()) {
+                    siblings.add(parseTable.size() - 1);
+                }
+            }
+            qq.addAll(0, siblings);
         }
-        for (int index = 0; index < parseTable.size(); index++) {
-            System.out.println(index + " --- info: " + parseTable.get(index).getKey() + "; parent: " + parseTable.get(index).getValue().getKey() + " leftSibling: " + parseTable.get(index).getValue().getValue());
+//        for (int index = 0; index < parseTable.size(); index++) {
+//            System.out.println(index + " --- info: " + parseTable.get(index).getKey() + "; parent: " + parseTable.get(index).getValue().getKey() + " leftSibling: " + parseTable.get(index).getValue().getValue());
+//        }
+        writeParseTreeToFile(parseTable);
+    }
+
+    private void writeParseTreeToFile(List<Pair<TermOrNonTerm, Pair<Integer, Integer>>> parseTable) {
+        var filePath = Grammar.class.getClassLoader().getResource("out/parseTree.out").getPath();
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
+            for (int index=0;index<parseTable.size();index++){
+                bw.write(index + " --- info: " + parseTable.get(index).getKey() + "; parent: " + parseTable.get(index).getValue().getKey() + " leftSibling: " + parseTable.get(index).getValue().getValue());
+                bw.write("\n");
+            }
+            bw.flush();
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

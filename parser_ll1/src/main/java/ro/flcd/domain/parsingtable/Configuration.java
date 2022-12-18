@@ -10,10 +10,7 @@ import ro.flcd.domain.grammar.Nonterminal;
 import ro.flcd.domain.grammar.TermOrNonTerm;
 import ro.flcd.domain.grammar.Terminal;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 @Getter
 @Setter
@@ -24,6 +21,13 @@ public class Configuration {
     List<Integer> productionsIndexes = new ArrayList<>();
     private Stack<TermOrNonTerm> inputStack;
     private Stack<TermOrNonTerm> workingStack;
+
+    public Configuration(List<Integer> productionsIndexes, Map<Pair<TermOrNonTerm, TermOrNonTerm>, ParsingTableValue> table, Stack<TermOrNonTerm> inputStack, Stack<TermOrNonTerm> workingStack) {
+        this.productionsIndexes = productionsIndexes;
+        this.table = table;
+        this.inputStack = inputStack;
+        this.workingStack = workingStack;
+    }
 
     public Configuration(Map<Pair<TermOrNonTerm, TermOrNonTerm>, ParsingTableValue> table, Stack<TermOrNonTerm> inputStack, Stack<TermOrNonTerm> workingStack) {
         this.table = table;
@@ -67,5 +71,9 @@ public class Configuration {
 
     public boolean isAccepted() {
         return table.get(Pair.of(workingStack.get(0), inputStack.get(0))).equals(SpecialTableValue.ACC);
+    }
+
+    public Configuration deepCopy() {
+        return new Configuration(new ArrayList<>(productionsIndexes),new HashMap<>(this.table), (Stack<TermOrNonTerm>) this.inputStack.clone(), (Stack<TermOrNonTerm>) this.workingStack.clone());
     }
 }
