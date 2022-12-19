@@ -21,7 +21,7 @@ expression#term,expression1
 expression1#+,expression1|-,expression1|EPSILON|expression
 term#factor,term1
 term1#*,term1|%,term1|/,term1|EPSILON
-factor#(,expression,)|identifier,assignstmtlala|constnr|
+factor#(,expression,)|identifier,assignstmtlala|constnr
 iostmt#read,(,identifier,assignstmtlala,)|write,(,writeitem,)
 writeitem#lalaitem|identifier,assignstmtlala
 lalaitem#constnr|constchar|conststring

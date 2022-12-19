@@ -25,7 +25,7 @@ public class Main {
         Parser parser = new Parser("in/g2.txt");
 //        Parser parser = new Parser("in/g3.txt");
         ParsingTable parsingTable = new ParsingTable(parser);
-        parsingTable.parseSequenceFromPif("in/pifserr2.txt");
+        parsingTable.parseSequenceFromPif("in/pif3.txt");
 //        parsingTable.parseSequenceFromFile("in/seq3.txt");
     }
 }
