@@ -1,4 +1,3 @@
-
 {
 int[20] numbers;
 int sum;
@@ -22,4 +21,3 @@ index=index+1;
 
 write(sum);
 end
-}

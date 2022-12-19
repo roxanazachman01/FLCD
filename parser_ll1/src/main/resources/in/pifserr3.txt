@@ -1,4 +1,3 @@
-
 Token: "{", Positions: -1=-1
 Token: "int", Positions: -1=-1
 Token: "[", Positions: -1=-1

@@ -5,11 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/out/configs.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/out/parseTree.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/src/main/resources/in/serr1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/src/main/resources/in/serr2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/src/main/resources/in/serr3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/in/serr1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/in/serr2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/in/serr3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pif1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pif2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pif3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pifserr1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pifserr2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/pifserr3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/seq1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/seq3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/in/seq3err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ro/flcd/domain/parsingtable/ParsingTableTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/src/main/java/ro/flcd/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/src/main/java/ro/flcd/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/src/main/java/ro/flcd/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/src/main/resources/in/p3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/src/main/resources/in/p3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/in/p3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/in/p3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/out/PIF.out" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/out/PIF.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/out/ST.out" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/out/ST.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/FiniteAutomata.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/FiniteAutomata.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/../FA/lab3/target/classes/ro/flcd/Scanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/domain/parsingtable/ParsingTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/in/g2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/g2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +45,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -51,7 +76,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/parser_ll1",
+    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/FA/lab3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,11 +96,12 @@
       <recent name="ro.flcd" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="ro.flcd.domain.parsingtable" />
       <recent name="ro.flcd.domain" />
       <recent name="ro.flcd" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ParsingTableTest.parseSequenceFromPif">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ro.flcd.Main" />
       <module name="parser_ll1" />
@@ -85,21 +111,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GrammarTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="parser_ll1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ro.flcd.domain.grammar.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ro.flcd" />
-      <option name="MAIN_CLASS_NAME" value="ro.flcd.GrammarTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,12 +146,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ParsingTableTest.parseSequenceFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parser_ll1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ro.flcd.domain.parsingtable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ro.flcd.domain.parsingtable" />
+      <option name="MAIN_CLASS_NAME" value="ro.flcd.domain.parsingtable.ParsingTableTest" />
+      <option name="METHOD_NAME" value="parseSequenceFromFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParsingTableTest.parseSequenceFromPif" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="parser_ll1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ro.flcd.domain.parsingtable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ro.flcd.domain.parsingtable" />
+      <option name="MAIN_CLASS_NAME" value="ro.flcd.domain.parsingtable.ParsingTableTest" />
+      <option name="METHOD_NAME" value="parseSequenceFromPif" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ParsingTableTest.parseSequenceFromPif" />
+        <item itemvalue="JUnit.ParsingTableTest.parseSequenceFromFile" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ParserTest" />
         <item itemvalue="JUnit.ParserTest.firstTest" />
-        <item itemvalue="JUnit.GrammarTest" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +210,7 @@
       <workItem from="1670754974894" duration="31255000" />
       <workItem from="1670865905881" duration="2123000" />
       <workItem from="1671359264023" duration="6142000" />
+      <workItem from="1671393170486" duration="10447000" />
     </task>
     <servers />
   </component>

@@ -7,8 +7,7 @@ import ro.flcd.domain.grammar.Grammar;
 import ro.flcd.domain.grammar.TermOrNonTerm;
 import ro.flcd.domain.grammar.Terminal;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.*;
 
 public class ParsingTable {
@@ -35,8 +34,8 @@ public class ParsingTable {
                 Integer index = pair.getRight();
                 for (var term : first) {
                     if (!table.get(Pair.of(nonterm, term)).equals(SpecialTableValue.ERR)) {
-                        System.out.println(table.get(Pair.of(nonterm, term)));
-                        System.out.println(new NormalTableValue(prod.getRightHS(), index));
+                        System.out.println("Old value: " + Pair.of(nonterm, term) + " -> " + table.get(Pair.of(nonterm, term)));
+                        System.out.println("New value: " + Pair.of(nonterm, term) + " -> " + new NormalTableValue(prod.getRightHS(), index));
                         throw new RuntimeException("Conflict: " + nonterm + " " + term);
                     }
                     if (!term.equals(new Epsilon())) {
@@ -117,45 +116,116 @@ public class ParsingTable {
         table.put(Pair.of(new DollarSign(), new DollarSign()), SpecialTableValue.ACC);
     }
 
-    public void parseSequence(List<Terminal> sequence) {
-        Configuration configuration = Configuration.getInitialConfig(table, sequence, grammar.getStartSymbol());
-        boolean run = true, error = false;
-        List<Configuration> configurations = new ArrayList<>();
-        while (run) {
-            configurations.add(configuration.deepCopy());
-            if (configuration.shouldPush()) {
-                configuration.push();
-            } else {
-                if (configuration.shouldPop()) {
-                    configuration.pop();
+    public boolean parseSequenceFromFile(final String path) {
+        List<Terminal> sequence = new ArrayList<>();
+        var filePath = Grammar.class.getClassLoader().getResource(path).getPath();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            var parts = br.readLine().split(",");
+            for (var part : parts) {
+                var term = new Terminal(part);
+                if (grammar.getTerminals().contains(term)) {
+                    sequence.add(term);
                 } else {
-                    if (!configuration.isAccepted()) {
-                        error = true;
-                    }
-                    run = false;
+                    throw new RuntimeException("Invalid sequence from file. Element " + part + " is not a terminal in the grammar " + grammar.getFilePath() + ".");
                 }
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        configurations.add(configuration.deepCopy());
-        writeConfigToFile(configurations);
-        if (error) {
-            System.out.println("Sequence is not accepted.");
-        } else {
-            System.out.println("Sequence is accepted.");
-            constructParseTree(configuration.getProductionsIndexes());
+        return parseSequence(sequence);
+    }
+
+    public boolean parseSequenceFromPif(String path) {
+        List<Terminal> sequence = new ArrayList<>();
+        var filePath = Grammar.class.getClassLoader().getResource(path).getPath();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    var parts = line.split(",");
+                    var tokenPart = parts[0].split(" ")[1];
+                    tokenPart = tokenPart.substring(1, tokenPart.length() - 1);
+                    var term = new Terminal(tokenPart);
+                    if (grammar.getTerminals().contains(term)) {
+                        sequence.add(term);
+                    } else {
+                        throw new RuntimeException("Invalid sequence from file. Element " + tokenPart + " is not a terminal in the grammar " + grammar.getFilePath() + ".");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+//        System.out.println(sequence);
+        return parseSequence(sequence);
+    }
+
+    public boolean parseSequence(List<Terminal> sequence) {
+        Configuration configuration = Configuration.getInitialConfig(table, sequence, grammar.getStartSymbol());
+        boolean run = true, error = false;
+//        List<Configuration> configurations = new ArrayList<>();
+        var filePath = Grammar.class.getClassLoader().getResource("out/configs.out").getPath();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            while (run) {
+//                configurations.add(configuration.deepCopy());
+                bw.write(configuration.deepCopy().toString());
+                bw.write("\n");
+                if (configuration.shouldPush()) {
+                    configuration.push();
+                } else {
+                    if (configuration.shouldPop()) {
+                        configuration.pop();
+                    } else {
+                        if (!configuration.isAccepted()) {
+                            error = true;
+                            System.out.println(configuration);
+                        }
+                        run = false;
+                    }
+                }
+            }
+            bw.write(configuration.deepCopy().toString());
+            bw.write("\n");
+
+//        configurations.add(configuration.deepCopy());
+//        writeConfigsToFile(configurations);
+            if (error) {
+                System.out.println("Sequence is not accepted.");
+                bw.write("ERROR!!! --- Sequence is not accepted.");
+                bw.write("\n");
+                bw.flush();
+                return false;
+            } else {
+                System.out.println("Sequence is accepted.");
+                constructParseTree(configuration.getProductionsIndexes());
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
-    private void writeConfigToFile(List<Configuration> configurations) {
+    private void writeConfigToFile(Configuration configuration) {
         var filePath = Grammar.class.getClassLoader().getResource("out/configs.out").getPath();
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
-            for (var c:configurations){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            bw.write(configuration.toString());
+            bw.write("\n");
+            bw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeConfigsToFile(List<Configuration> configurations) {
+        var filePath = Grammar.class.getClassLoader().getResource("out/configs.out").getPath();
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            for (var c : configurations) {
                 bw.write(c.toString());
                 bw.write("\n");
             }
             bw.flush();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -191,14 +261,13 @@ public class ParsingTable {
 
     private void writeParseTreeToFile(List<Pair<TermOrNonTerm, Pair<Integer, Integer>>> parseTable) {
         var filePath = Grammar.class.getClassLoader().getResource("out/parseTree.out").getPath();
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))){
-            for (int index=0;index<parseTable.size();index++){
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            for (int index = 0; index < parseTable.size(); index++) {
                 bw.write(index + " --- info: " + parseTable.get(index).getKey() + "; parent: " + parseTable.get(index).getValue().getKey() + " leftSibling: " + parseTable.get(index).getValue().getValue());
                 bw.write("\n");
             }
             bw.flush();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

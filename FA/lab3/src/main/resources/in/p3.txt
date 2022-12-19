@@ -9,7 +9,7 @@ sum=0;
 index=0;
 while(index<20)
 {
-read(numbers[index])
+read(numbers[index]);
 index=index+1;
 }
 

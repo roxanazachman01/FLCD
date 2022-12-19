@@ -6,6 +6,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Scanner {
     private final String filePath;
@@ -190,6 +192,28 @@ public class Scanner {
         return FiniteAutomata.verifyValidConstant(constant);
     }
 
+    private boolean isValidCharConst(String constant) {
+        boolean validConstant = false;
+        String regex = this.constantRegex.get(2);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(constant);
+        if (matcher.find()) {
+            validConstant = true;
+        }
+        return validConstant;
+    }
+
+    private boolean isValidStringConst(String constant) {
+        boolean validConstant = false;
+        String regex = this.constantRegex.get(1);
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(constant);
+        if (matcher.find()) {
+            validConstant = true;
+        }
+        return validConstant;
+    }
+
     private boolean isValidNumerical(final String constant) {
 //        Pattern pattern = Pattern.compile(numericalRegex);
 //        Matcher matcher = pattern.matcher(constant);
@@ -286,15 +310,26 @@ public class Scanner {
     private void codify(List<String> tokens) {
         for (final String token : tokens) {
             Pair<Integer, Integer> positions = isSymbol(token) ? symbolTable.insert(token) : new Pair<>(-1, -1);
-            if (isValidIdentifier(token)) {
-                pif.add("id", positions);
-            } else {
-                if (isValidConstant(token)) {
-                    pif.add("const", positions);
-                } else {
-                    pif.add(token, positions);
+            if (isSymbol(token)) {
+                if (isValidIdentifier(token)) {
+                    pif.add("identifier", positions);
+                } else if (isValidConstant(token)) {
+                    {
+                        if (isValidCharConst(token)) {
+                            pif.add("constchar", positions);
+                        } else if (isValidStringConst(token)) {
+                            pif.add("conststring", positions);
+                        } else if (isValidNumerical(token)) {
+                            pif.add("constnr", positions);
+                        } else {
+                            pif.add("const", positions);
+                        }
+                    }
                 }
+            } else {
+                pif.add(token, positions);
             }
+
         }
     }
 }
