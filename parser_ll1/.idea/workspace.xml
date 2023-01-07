@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/in/g2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/g2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/in/seq3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/seq3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/flcd/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +47,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/FA/lab3",
+    "last_opened_file_path": "C:/Users/ztr53/Desktop/Hamilton2/Hamilton2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -186,6 +182,7 @@
       <workItem from="1670865905881" duration="2123000" />
       <workItem from="1671359264023" duration="6142000" />
       <workItem from="1671393170486" duration="13093000" />
+      <workItem from="1671552206176" duration="189000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,5 @@
+flex -o lang.c lang.l
+gcc -o lang lang.c
+./lang lab1a/p1.txt
+
+
