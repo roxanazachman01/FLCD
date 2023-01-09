@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/flcd/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/in/seq3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/in/seq3.txt" afterDir="false" />
-    </list>
+    <list default="true" id="1a876b91-f783-4fac-8973-d048e040880f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +45,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit4",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4": "",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/parser_ll1",
+    "last_opened_file_path": "C:/Users/ztr53/Documents/GitHub/FLCD/FA/lab3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -184,7 +180,7 @@
       <workItem from="1671359264023" duration="6142000" />
       <workItem from="1671393170486" duration="13093000" />
       <workItem from="1671552206176" duration="189000" />
-      <workItem from="1673112578465" duration="3881000" />
+      <workItem from="1673112578465" duration="4797000" />
     </task>
     <servers />
   </component>

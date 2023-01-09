@@ -1,9 +1,0 @@
-{
-float x;
-string str;
-string str2;
-int 324324sxcv;
-
-str='lalala';
-str2="lala
-}
