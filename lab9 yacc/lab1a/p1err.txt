@@ -1,0 +1,23 @@
+{
+float x;
+string str;
+int 324324sxcv;
+
+begin
+
+a=+0;
+a=-0;
+a=0;
+a=-0123;
+a=+0123;
+a=123;
+a=+123;
+a=-123;
+str='lalala';
+str="lala;
+str=lala";
+str='lala;
+str=lala';
+
+end
+}

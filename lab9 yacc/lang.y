@@ -1,112 +1,138 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define YYDEBUG 1
 
-#define TIP_INT 1
-#define TIP_REAL 2
-#define TIP_CAR 3
-
-double stack[20];
-int sp;
-
-void push(double x)
-{ stack[sp++] = x; }
-
-double pop()
-{ return stack[--sp]; }
-
-%}
-
-%union {
-  	int l_val;
-	char *p_val;
+int yylex();
+void yyerror();
+int indexes[5000],n=0;
+void add_index(int index){
+	indexes[n]=index;
+	n++;
 }
 
-%token CHAR STRING INT IF ELSE READ WRITE WHILE BEGIN END
-%token ' ' '(' ')' '[' ']' '{' '}' ';' '\n' '\t' '\r'
-%token '+' '-' '*' '/' LE '<' GE '>' NE EQ '=' '%'
+void print_indexes(){
+	for(int i=0;i<n;i++)
+		printf("%d ",indexes[i]);
+}
+%}
+
+%token CHAR STRING INT IF ELSE READ WRITE WHILE BEGINN END
+%token ROP RCP SOB SCB COB CCB COLON
+%token PLUS MINUS MULTIPLY DIV LE LT GE GT NE EQ ASSIGN MOD
 
 %token IDENTIFIER
-%token <p_val> CONSTNR
-%token <p_val> CONSTCHAR
-%token <p_val> CONSTSTRING
-%token EPSILON
+%token CONSTNR
+%token CONSTCHAR
+%token CONSTSTRING
+
 %%
 
-program: '{' decllist cmpdstmt '}'
+program: COB decllist cmpdstmt CCB
 		;
 		
 decllist: declaration decllistlala
-;
-decllistlala: decllist | EPSILON
-;
-declaration: type IDENTIFIER ';'
-;
+		;
+decllistlala: decllist 
+		|
+		;
+declaration: type IDENTIFIER COLON
+		;
 type: type1 arraydecl
-;
-type1: INT | CHAR | STRING
-;
-arraydecl: CONSTNR ']' | EPSILON
-;
-cmpdstmt: BEGIN stmtlist END
-;
+		;
+type1: INT
+		| CHAR
+		| STRING
+		;
+arraydecl: CONSTNR SCB
+		|
+		;
+cmpdstmt: BEGINN stmtlist END
+		;
 stmtlist: stmt stmtlistlala
+		;
+stmtlistlala: stmtlist
+		|
 ;
-stmtlistlala: stmtlist | EPSILON
+stmt: simplstmt COLON
+		| structstmt
 ;
-stmt: simplstmt ';' | structstmt
+simplstmt: assignstmt
+		| iostmt
 ;
-simplstmt: assignstmt | iostmt
+assignstmt: IDENTIFIER assignstmtlala ASSIGN expression
 ;
-assignstmt: IDENTIFIER assignstmtlala '=' expression
+assignstmtlala: SOB assignstmtlala2 SCB
+		|
 ;
-assignstmtlala: '[' assignstmtlala2 ']' | EPSILON
+assignstmtlala2: CONSTNR
+		| IDENTIFIER 
 ;
-assignstmtlala2: CONSTNR | IDENTIFIER
+expression: term expression1 
 ;
-expression: term expression1
+expression1: PLUS expression1 
+		| MINUS expression1 
+		| expression 
+		|
 ;
-expression1: '+' expression1 | '-' expression1 | EPSILON | expression
+term: factor term1 
 ;
-term: factor term1
+term1: MULTIPLY term1 
+		| MOD term1
+		| DIV term1
+		|
 ;
-term1: '*' term1 | '%' term1 | '/' term1 | EPSILON
+factor: ROP expression RCP 
+		| IDENTIFIER assignstmtlala 
+		| CONSTNR 
 ;
-factor: '(' expression ')' | IDENTIFIER assignstmtlala | CONSTNR
+iostmt: READ ROP IDENTIFIER assignstmtlala RCP 
+		| WRITE ROP writeitem RCP 
 ;
-iostmt: READ '(' IDENTIFIER assignstmtlala ')' | WRITE '(' writeitem ')'
+writeitem: lalaitem
+		| IDENTIFIER assignstmtlala
 ;
-writeitem: lalaitem | IDENTIFIER assignstmtlala
+lalaitem: CONSTNR
+		| CONSTCHAR
+		| CONSTSTRING
 ;
-lalaitem: CONSTNR | CONSTCHAR | CONSTSTRING
+structstmt: ifstmt
+		| whilestmt
 ;
-structstmt: ifstmt | whilestmt
+ifstmt: IF ROP condition RCP COB stmtlist CCB elsestmt
 ;
-ifstmt: IF '(' condition ')' '{' stmtlist '}' elsestmt
+elsestmt: ELSE COB stmtlist CCB
+		| 
 ;
-elsestmt: ELSE '{' stmtlist '}' | EPSILON
+whilestmt: WHILE ROP condition RCP COB stmtlist CCB
 ;
-whilestmt: WHILE '(' condition ')' '{' stmtlist '}'
+condition: expression relation expression 
 ;
-condition: expression relation expression
-;
-relation: '<' | LE | GE | '>' | EQ | NE
+relation: LT
+		| LE
+		| GE
+		| GT
+		| EQ
+		| NE
 ;
 
 %%
 
-yyerror(char *s)
+void yyerror(char *s)
 {
   printf("%s\n", s);
 }
 
 extern FILE *yyin;
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   if(argc>1) yyin = fopen(argv[1], "r");
   if((argc>2)&&(!strcmp(argv[2],"-d"))) yydebug = 1;
-  if(!yyparse()) fprintf(stderr,"\tO.K.\n");
+  if(!yyparse()) {
+	fprintf(stderr,"Parsed with success.\n");
+	print_indexes();
+  }
 }
 

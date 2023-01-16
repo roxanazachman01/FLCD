@@ -49,33 +49,79 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    IDENTIFIER = 258,
-    CONSTNR = 259,
-    CONSTCHAR = 260,
-    CONSTSTRING = 261,
-    EPSILON = 262
+    CHAR = 258,
+    STRING = 259,
+    INT = 260,
+    IF = 261,
+    ELSE = 262,
+    READ = 263,
+    WRITE = 264,
+    WHILE = 265,
+    BEGINN = 266,
+    END = 267,
+    ROP = 268,
+    RCP = 269,
+    SOB = 270,
+    SCB = 271,
+    COB = 272,
+    CCB = 273,
+    COLON = 274,
+    PLUS = 275,
+    MINUS = 276,
+    MULTIPLY = 277,
+    DIV = 278,
+    LE = 279,
+    LT = 280,
+    GE = 281,
+    GT = 282,
+    NE = 283,
+    EQ = 284,
+    ASSIGN = 285,
+    MOD = 286,
+    IDENTIFIER = 287,
+    CONSTNR = 288,
+    CONSTCHAR = 289,
+    CONSTSTRING = 290
   };
 #endif
 /* Tokens.  */
-#define IDENTIFIER 258
-#define CONSTNR 259
-#define CONSTCHAR 260
-#define CONSTSTRING 261
-#define EPSILON 262
+#define CHAR 258
+#define STRING 259
+#define INT 260
+#define IF 261
+#define ELSE 262
+#define READ 263
+#define WRITE 264
+#define WHILE 265
+#define BEGINN 266
+#define END 267
+#define ROP 268
+#define RCP 269
+#define SOB 270
+#define SCB 271
+#define COB 272
+#define CCB 273
+#define COLON 274
+#define PLUS 275
+#define MINUS 276
+#define MULTIPLY 277
+#define DIV 278
+#define LE 279
+#define LT 280
+#define GE 281
+#define GT 282
+#define NE 283
+#define EQ 284
+#define ASSIGN 285
+#define MOD 286
+#define IDENTIFIER 287
+#define CONSTNR 288
+#define CONSTCHAR 289
+#define CONSTSTRING 290
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-union YYSTYPE
-{
-#line 21 "lang.y"
-
-  	int l_val;
-	char *p_val;
-
-#line 76 "y.tab.h"
-
-};
-typedef union YYSTYPE YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
